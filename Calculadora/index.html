@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Calculadora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Freeman&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="Calculadora">
+      
+      <div class="elementos">
+        <label for="valor1">Valor 1:</label>
+        <input
+          class="elementos__add"
+          type="number"
+          id="num1"
+          placeholder="99"
+        />
+      </div>
+      <div class="elementos">
+        <label for="valor2">Valor 2:</label>
+        <input
+          class="elementos__add"
+          type="number"
+          id="num2"
+          placeholder="99"
+        />
+      </div>
+
+      <div class="operadores">
+        <button class="operator" onclick="somar()">Somar</button>
+        <button class="operator" onclick="Multiplicar()">Multiplicar</button>
+        <button class="operator" onclick="Subtrair()">Subtrair</button>
+        <button class="operator" onclick="dividir()">Dividir</button>
+      </div>
+
+      <div class="produto">
+        <label for="resultado">Resultado:</label>
+        <input class="elementos__result" type="text" id="result" placeholder="999" readonly />
+      </div>
+
+    </div>
+
+      <script>
+        function isvalid() {
+          var num1 = document.getElementById("num1").value;
+          var num2 = document.getElementById("num2").value;
+
+          if (num1 == "" || num2 == "") {
+            return false;
+          }
+          return true;
+        }
+
+        function divisionIsValid() {
+          var num2 = document.getElementById("num2").value;
+          if (num2 == "0" || num2 == "") {
+            return false;
+          }
+          return true;
+        }
+
+        function somar() {
+          if (isvalid()) {
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            document.getElementById("result").value = num1 + num2;
+          } else {
+            document.getElementById("result").value =
+              "Dados em branco, favor digitar algo!";
+          }
+        }
+
+        function Multiplicar() {
+          if (isvalid()) {
+          var num1 = parseFloat(document.getElementById("num1").value);
+          var num2 = parseFloat(document.getElementById("num2").value);
+          document.getElementById("result").value = num1 * num2;
+        } else {
+            document.getElementById("result").value =
+              "Dados em branco, favor digitar algo!";
+          }
+        }
+
+        function Subtrair() {
+          if (isvalid()) {
+          var num1 = parseFloat(document.getElementById("num1").value);
+          var num2 = parseFloat(document.getElementById("num2").value);
+          document.getElementById("result").value = num1 - num2;
+        } else {
+            document.getElementById("result").value =
+              "Dados em branco, favor digitar algo!";
+          }
+        }
+
+        function dividir() {
+          if (isvalid()) {
+            if (divisionIsValid()) {
+              var num1 = parseFloat(document.getElementById("num1").value);
+              var num2 = parseFloat(document.getElementById("num2").value);
+              document.getElementById("result").value = num1 / num2;
+            } else {
+              document.getElementById("result").value =
+                "Não há divisão por zero";
+            }
+          } else {
+            document.getElementById("result").value =
+              "Dados em branco, favor digitar algo!";
+          }
+        }
+      </script>
+    
+  </body>
+</html>
